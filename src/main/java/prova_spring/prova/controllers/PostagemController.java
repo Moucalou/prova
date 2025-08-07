@@ -1,6 +1,8 @@
 package prova_spring.prova.controllers;
 
 import org.springframework.web.bind.annotation.*;
+import prova_spring.prova.entities.Comentario;
+import prova_spring.prova.entities.Curtida;
 import prova_spring.prova.entities.Postagem;
 import prova_spring.prova.entities.Usuario;
 import prova_spring.prova.repositories.PostagemRepository;
@@ -42,6 +44,23 @@ public class PostagemController {
     @GetMapping("/{id}")
     public Postagem buscarPostagem(@PathVariable Integer id) {
         return this.postagemRepository.findById(id).get();
+    }
+
+    //GET Listar comentário de uma postagem
+    @GetMapping("/{id}/comentarios")
+    public List<Comentario> listarComentario(@PathVariable Integer id) {
+
+        Postagem postagem = this.postagemRepository.findById(id).get();
+        List<Comentario> coment = postagem.getComentarios();
+        return postagem.getComentarios();
+    }
+
+    //GET Listar todos os usuários que curtiram uma postagem
+    @GetMapping("/{id}/curtidas")
+    public List<Curtida> listarCurtida(@PathVariable Integer id) {
+        Postagem postagem = this.postagemRepository.findById(id).get();
+        List<Curtida> curt = postagem.getCurtidas();
+        return postagem.getCurtidas();
     }
 
 }

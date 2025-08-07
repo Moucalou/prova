@@ -1,7 +1,8 @@
 package prova_spring.prova.controllers;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import prova_spring.prova.dtos.ComentarioRequestDTO;
+import prova_spring.prova.dtos.ComentarioResponseDTO;
 import prova_spring.prova.entities.Comentario;
 import prova_spring.prova.repositories.ComentarioRepository;
 import prova_spring.prova.repositories.PostagemRepository;
@@ -23,10 +24,20 @@ public class ComentarioController {
     }
 
     //POST
-    public Comentario criarComentario() {
+    @PostMapping
+    public ComentarioResponseDTO criarComentario(
+            @RequestBody ComentarioRequestDTO request
+            ) {
+        Comentario novo = new Comentario();
 
+        novo.setTexto(request.getTexto());
+        novo.setDatacriacao(request.getDatacriacao());
+
+        novo.setUsuario(usuarioRepository.findById(request.getIdUsuario()).get());
+        novo.setPostagem(postagemRepository.findById(request.getIdPostagem()).get());
+
+        this.comentarioRepository.save(novo);
+
+        return new ComentarioResponseDTO(novo);
     }
-
-
-
 }
