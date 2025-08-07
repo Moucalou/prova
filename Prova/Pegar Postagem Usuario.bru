@@ -1,0 +1,15 @@
+meta {
+  name: Pegar Postagem Usuario
+  type: http
+  seq: 6
+}
+
+get {
+  url: http://localhost:8080/usuarios/2/postagens
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

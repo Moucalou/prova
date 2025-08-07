@@ -2,7 +2,6 @@ package prova_spring.prova.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -14,9 +13,9 @@ public class Postagem {
     @Id
     private Integer id;
     private String conteudo;
-    private LocalDateTime dataCriacao;
+    private LocalDateTime datacriacao;
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
+    @JoinColumn(name = "autor")
     @JsonIgnore
     private Usuario usuario;
 
@@ -58,12 +57,12 @@ public class Postagem {
         this.usuario = usuario;
     }
 
-    public LocalDateTime getDataCriacao() {
-        return dataCriacao;
+    public LocalDateTime getDatacriacao() {
+        return datacriacao;
     }
 
-    public void setDataCriacao(LocalDateTime dataCriacao) {
-        this.dataCriacao = dataCriacao;
+    public void setDatacriacao(LocalDateTime datacriacao) {
+        this.datacriacao = datacriacao;
     }
 
     public String getConteudo() {

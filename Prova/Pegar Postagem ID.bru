@@ -1,0 +1,15 @@
+meta {
+  name: Pegar Postagem ID
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://localhost:8080/postagens/2
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

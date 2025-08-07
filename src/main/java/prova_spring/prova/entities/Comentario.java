@@ -2,25 +2,24 @@ package prova_spring.prova.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 
 @Entity
 public class Comentario {
-
     @Id
     private Integer id;
     private String texto;
-    private LocalDateTime dataCriacao;
+    private LocalDateTime datacriacao;
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
+    @JoinColumn(name = "autor")
     @JsonIgnore
     private Usuario usuario;
     @ManyToOne
-    @JoinColumn(name = "id_postagem")
+    @JoinColumn(name = "postagem")
     @JsonIgnore
     private Postagem postagem;
 
@@ -40,12 +39,12 @@ public class Comentario {
         this.texto = texto;
     }
 
-    public LocalDateTime getDataCriacao() {
-        return dataCriacao;
+    public LocalDateTime getDatacriacao() {
+        return datacriacao;
     }
 
-    public void setDataCriacao(LocalDateTime dataCriacao) {
-        this.dataCriacao = dataCriacao;
+    public void setDatacriacao(LocalDateTime datacriacao) {
+        this.datacriacao = datacriacao;
     }
 
     public Usuario getUsuario() {

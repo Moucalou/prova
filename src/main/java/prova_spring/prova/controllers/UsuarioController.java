@@ -1,6 +1,7 @@
 package prova_spring.prova.controllers;
 
 import org.springframework.web.bind.annotation.*;
+import prova_spring.prova.entities.Postagem;
 import prova_spring.prova.entities.Usuario;
 import prova_spring.prova.repositories.UsuarioRepository;
 
@@ -55,5 +56,14 @@ public class UsuarioController {
         Usuario usuario = this.usuarioRepository.findById(id).get();
         this.usuarioRepository.deleteById(id);
         return usuario;
+    }
+
+    //GET Postagens
+    @GetMapping("/{id}/postagens")
+    public List<Postagem> listarPostagens(@PathVariable Integer id) {
+
+        Usuario usuario = this.usuarioRepository.findById(id).get();
+        List<Postagem> post = usuario.getPostagens();
+        return usuario.getPostagens();
     }
 }

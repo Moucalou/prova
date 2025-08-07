@@ -2,8 +2,8 @@ package prova_spring.prova.entities;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import org.springframework.data.annotation.Id;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,15 +16,15 @@ public class Usuario {
     private Integer id;
     private String nome;
     private String email;
-    private LocalDate dataCadastro;
+    private LocalDate datacadastro;
 
-    @OneToMany(mappedBy = "Usuario", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     List<Postagem> postagens = new ArrayList<>();
 
-    @OneToMany(mappedBy = "Usuario", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     List<Comentario> comentarios = new ArrayList<>();
 
-    @OneToMany(mappedBy = "Usuario", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     List<Curtida> curtidas = new ArrayList<>();
 
     public List<Comentario> getComentarios() {
@@ -75,11 +75,11 @@ public class Usuario {
         this.email = email;
     }
 
-    public LocalDate getDataCadastro() {
-        return dataCadastro;
+    public LocalDate getDatacadastro() {
+        return datacadastro;
     }
 
-    public void setDataCadastro(LocalDate dataCadastro) {
-        this.dataCadastro = dataCadastro;
+    public void setDatacadastro(LocalDate datacadastro) {
+        this.datacadastro = datacadastro;
     }
 }

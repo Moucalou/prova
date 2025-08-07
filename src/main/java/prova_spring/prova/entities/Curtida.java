@@ -2,9 +2,9 @@ package prova_spring.prova.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import org.springframework.data.annotation.Id;
 
 @Entity
 public class Curtida {
@@ -13,11 +13,11 @@ public class Curtida {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
+    @JoinColumn(name = "usuario")
     @JsonIgnore
     private Usuario usuario;
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
+    @JoinColumn(name = "postagem")
     @JsonIgnore
     private Postagem postagem;
 
